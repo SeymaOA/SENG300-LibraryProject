@@ -11,7 +11,7 @@ Nicholas Soucie:
 - LinkedList implementation
 - Linear search
 - LinkedList performance testing
-- -GUI
+- GUI
 
 Shared:
 - Book class
