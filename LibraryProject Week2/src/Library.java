@@ -13,32 +13,40 @@ public class Library {
 	
 	
 	String fileLink = "C:/Users/seymapc/eclipse-workspace/Thinkdast-SENG300/src/books.csv";
-	Pattern pattern = Pattern.compile("(?:^|,)");
+	Pattern pattern = Pattern.compile("(?:^|,)(\\\"[^\\\"]*\\\"|[^,]*)");
+
 	
 	
 	public void readCSV(String fileLink) throws FileNotFoundException {
 
 		Scanner scnr = new Scanner(new File(fileLink));
-		
-	
-		
+		if(scnr.hasNextLine()) {
+			scnr.nextLine();
+		}
+
 		while(scnr.hasNextLine()) {
 			String line = scnr.nextLine();
-			String[] fields = line.split(",",-1);
+			//String[] fields = line.split(",",-1);
 			Matcher matcher = pattern.matcher(line);
-			out.println(line);
+			//out.println(line);
 			
-			
-			
-			if(fields.length !=23) {
-				out.println();
-				out.println("Fields: " + fields.length);
-				out.println(matcher.find());
-			}
-
-		}
+			String[] fields = new String[23];
+			int index = 0;
 	
-
+			while(matcher.find()) {
+				//out.println(matcher.group(1));   //To read every  box
+				fields[index] = matcher.group(1);	
+				index++;
+			}
+			
+			
+			Book book = new Book(fields);
+			books.add(book);
+		}
+		
+		
+		
+		
 }
 	
 	
