@@ -1,6 +1,7 @@
 package Week2LibraryProject;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +19,6 @@ public class Library {
 	
 	
 	public void readCSV(String fileLink) throws FileNotFoundException {
-
 		Scanner scnr = new Scanner(new File(fileLink));
 		if(scnr.hasNextLine()) {
 			scnr.nextLine();
@@ -28,7 +28,7 @@ public class Library {
 			String line = scnr.nextLine();
 			//String[] fields = line.split(",",-1);
 			Matcher matcher = pattern.matcher(line);
-			//out.println(line);
+			
 			
 			String[] fields = new String[23];
 			int index = 0;
@@ -37,6 +37,7 @@ public class Library {
 				//out.println(matcher.group(1));   //To read every  box
 				fields[index] = matcher.group(1);	
 				index++;
+				//out.println("index: " + index); // check index
 			}
 			
 			
@@ -45,12 +46,30 @@ public class Library {
 		}
 		
 		
+		scnr.close();
+		out.println("books loaded total: " + books.size());
+		out.println();
 		
+	
+		/*
+		for(int i = 0; i < books.size(); i++) {
+			out.println(books.get(i));
+		}
+		*/
 		
 }
 	
 	
-
+	public void sortByAuthors(ArrayList<Book> books) {
+		books.sort(new Comparator<Book>() {
+			
+			@Override
+			public int compare(Book a, Book b) {
+				return a.getAuthors().compareToIgnoreCase(b.getAuthors());
+			
+		}
+		});
+	}
 	
 	
 	
