@@ -5,7 +5,7 @@ package Week2LibraryProject;
 //There are total 23 coloumns in database
 // this is base class
 public class Book {
-
+	
 	private String book_id;
 	private String goodreads_book_id;
 	private String best_book_id; //check what is max number. if it fits to int, we can use int because its saves space
@@ -196,6 +196,9 @@ public class Book {
 	public void setSmall_image_url(String small_image_url) {
 		this.small_image_url = small_image_url;
 	}
-	
+	@Override
+	public String toString() {
+		return book_id + " " + authors  + " " + title ;
+	}
 	
 }
