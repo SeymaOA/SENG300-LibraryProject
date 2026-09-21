@@ -16,5 +16,8 @@ Nicholas Soucie:
 Shared:
 - Book class
 - Sorting by authors, by original published year
-- Top 10 display
+- Top 10 display by rating
 - Runtime comparison
+- Seacrh by book_id and isbn
+- Add and delete book
+  
