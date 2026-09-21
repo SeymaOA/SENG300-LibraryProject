@@ -1,21 +1,88 @@
-package Week2LibraryProject;
+package Week2LibraryProjectV2;
 
-import java.util.Scanner;
 import java.io.File;
-import java.io.FileNotFoundException;
-import static java.lang.System.out;
+import java.io.IOException;
+import java.util.List;
 
-public class Main{
-	public static void main(String[] args) throws FileNotFoundException{
-		Library library = new Library();
-		library.readCSV("C:/Users/seymapc/eclipse-workspace/Thinkdast-SENG300/src/books.csv");
+public class Main {
 
-		library.sortByAuthors(library.books); // should have a button to click for sort in gui
-		
-		out.println("Sorted by authors: ");
-		
-		for(int i = 0; i < library.books.size(); i++) {
-			out.println(library.books.get(i));
-		}
-	}
+    public static void main(String[] args) {
+
+        String fileName =
+                args.length > 0 ? args[0] : "data/books.csv";
+
+        Library library = new Library();
+
+        try {
+
+            library.readCSV(fileName);
+
+            System.out.println(
+                    "Books loaded: "
+                    + library.getBooksList().size());
+
+
+            // Sort authors ascending
+            library.sortByAuthors(true);
+
+
+            System.out.println(
+                    "\nFirst 10 books sorted by authors:");
+
+            List<Book> books =
+                    library.getBooksList();
+
+
+            for (int i = 0;
+                 i < Math.min(10, books.size());
+                 i++) {
+
+                System.out.println(
+                        books.get(i));
+            }
+
+
+            System.out.println(
+                    "\nBinary search for book_id 1:");
+
+
+            List<Book> searchResult =
+                    library.binarySearch(
+                            "1",
+                            "book_id");
+
+
+            if (searchResult.isEmpty()) {
+
+                System.out.println(
+                        "Book not found.");
+
+            } else {
+
+                for (Book book : searchResult) {
+
+                    System.out.println(book);
+                }
+            }
+
+        }
+
+        catch (IOException e) {
+
+            System.err.println(
+                    "Could not load: "
+                    + new File(fileName)
+                    .getAbsolutePath());
+
+            System.err.println(
+                    e.getMessage());
+        }
+
+        catch (IllegalArgumentException e) {
+
+            System.err.println(
+                    "Error: "
+                    + e.getMessage());
+        }
+    }
 }
