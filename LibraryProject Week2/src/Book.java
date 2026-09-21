@@ -1,6 +1,6 @@
 package Week2LibraryProjectV2;
 
-//Shared data model: one object represents one CSV record.
+
 public class Book {
 
  public static final String[] COLUMN_NAMES = {
@@ -194,7 +194,7 @@ public class Book {
      small_image_url = clean(value);
  }
 
- // Alternative name used by Nick's original code.
+
  public String getBookId() {
      return book_id;
  }
@@ -213,7 +213,7 @@ public class Book {
      }
  }
 
- // Return the 23 values in the order expected by the GUI table.
+
  public String[] getDataArray() {
      return new String[] {
          book_id, goodreads_book_id, best_book_id, work_id,
