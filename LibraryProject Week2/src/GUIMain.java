@@ -16,7 +16,7 @@ public class GUIMain {
 
     public static void main(String[] args) {
         final String suggestedFile =
-                args.length > 0 ? args[0] : "data/books.csv";
+                args.length > 0 ? args[0] : "data/books_1.csv";
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -41,7 +41,7 @@ public class GUIMain {
 
                 final File file = chooser.getSelectedFile();
 
-                // Load data without blocking the GUI thread.
+                
                 new SwingWorker<Library, Void>() {
 
                     @Override
