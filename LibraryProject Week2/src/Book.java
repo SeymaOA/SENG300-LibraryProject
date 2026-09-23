@@ -1,7 +1,16 @@
 package Week2LibraryProjectV2;
 
-
+/*
+ * Represents one book record from library data set.
+ * Each book object stores the 23 values from one row of the CSV.
+ * The class provides getter and setter methods to access or update the book info.
+ */
 public class Book {
+	
+	/*
+	 * Stores the names of the 23 columns in the CSV data set.
+	 * The order of these names matches the order of the book fields.
+	 */
 	public static final String[] COLUMN_NAMES = {
 			"book_id", "goodreads_book_id", "best_book_id", "work_id",
 			"books_count", "isbn", "isbn13", "authors",
@@ -36,6 +45,12 @@ public class Book {
 	private String image_url;
 	private String small_image_url;
 
+	/*
+	 * Creates book objects using one row from CSV file.
+	 * The array must contain exactly 23 values in the same order as column names.
+	 * @param fields the 23 values for one book record
+	 * @throws IllegalArgumentException if the array is null or does not contain 23 fields.
+	 */
 	public Book(String[] fields) {
 		if (fields == null || fields.length != COLUMN_NAMES.length) {
 			throw new IllegalArgumentException("A book needs exactly 23 fields.");
@@ -66,7 +81,11 @@ public class Book {
 		small_image_url = clean(fields[22]);
 	}
 
-	// Keep missing cells as empty strings.
+	
+	/*
+	 * @param value the String to clean
+	 * @return the cleaned String
+	 */
 	private static String clean(String value) {
 		return value == null ? "" : value.trim();
 	}
@@ -124,6 +143,10 @@ public class Book {
 		original_title = clean(value);
 	}
 
+	/*
+	 * Returns the title of the book
+	 * @return the book title
+	 */
 	public String getTitle() { return title; }
 	public void setTitle(String value) {
 		title = clean(value);
