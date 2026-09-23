@@ -1,8 +1,7 @@
 package Week2LibraryProjectV2;
 
-//Shared data model: one object represents one CSV record.
-public class Book {
 
+public class Book {
 	public static final String[] COLUMN_NAMES = {
 			"book_id", "goodreads_book_id", "best_book_id", "work_id",
 			"books_count", "isbn", "isbn13", "authors",
@@ -39,8 +38,7 @@ public class Book {
 
 	public Book(String[] fields) {
 		if (fields == null || fields.length != COLUMN_NAMES.length) {
-			throw new IllegalArgumentException(
-					"A book needs exactly 23 fields.");
+			throw new IllegalArgumentException("A book needs exactly 23 fields.");
 		}
 
 		book_id = clean(fields[0]);
@@ -204,10 +202,7 @@ public class Book {
 		try {
 			double year = Double.parseDouble(original_publication_year);
 
-			return Double.isFinite(year)
-					? Double.valueOf(year)
-							: null;
-
+			return Double.isFinite(year)? Double.valueOf(year): null;
 		} catch (NumberFormatException e) {
 			return null;
 		}
