@@ -3,12 +3,12 @@ Team Responsibilities:
 
 Seyma Aguilar:
 - ArrayList implementation
-- CSV reading
 - Binary search
 - ArrayList performance testing
 - GUI
 
 Nicholas Soucie:
+- CSV reading
 - LinkedList implementation
 - Linear search
 - LinkedList performance testing
