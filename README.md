@@ -6,12 +6,13 @@ Seyma Aguilar:
 - CSV reading
 - Binary search
 - ArrayList performance testing
+- GUI
 
 Nicholas Soucie:
 - LinkedList implementation
 - Linear search
 - LinkedList performance testing
-- GUI
+
 
 Shared:
 - Book class
